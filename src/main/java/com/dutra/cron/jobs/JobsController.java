@@ -1,8 +1,6 @@
 package com.dutra.cron.jobs;
 
-import com.dutra.cron.jobs.validation.JobService;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

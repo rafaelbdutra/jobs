@@ -16,7 +16,7 @@ public class Job implements Runnable {
     private String name;
     @NotNull(message = "Job message cannot be null")
     private String message;
-    @Cron(message = "A valid format should be like * 0 9 * * *")
+    @Cron(message = "A valid cron format should be like * 0 9 * * *")
     private String cron;
 
     @JsonCreator
@@ -34,6 +34,10 @@ public class Job implements Runnable {
         return cron;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public void run() {
         System.out.println(message);
@@ -42,7 +46,6 @@ public class Job implements Runnable {
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append(message)
                 .toString();
     }
 }

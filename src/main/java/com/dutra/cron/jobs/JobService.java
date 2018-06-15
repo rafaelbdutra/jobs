@@ -1,6 +1,5 @@
-package com.dutra.cron.jobs.validation;
+package com.dutra.cron.jobs;
 
-import com.dutra.cron.jobs.Job;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;
@@ -14,10 +13,13 @@ import static java.util.stream.Collectors.toList;
 @Component
 public class JobService {
 
-    @Autowired
     private TaskScheduler taskScheduler;
-
     private Map<String, JobTuple> jobs = new HashMap();
+
+    @Autowired
+    public JobService(TaskScheduler taskScheduler) {
+        this.taskScheduler = taskScheduler;
+    }
 
     public Optional<Job> accept(Job job) {
         if (jobs.containsKey(job.getName())) {
@@ -47,7 +49,7 @@ public class JobService {
         return Optional.empty();
     }
 
-    static class JobTuple {
+    private static class JobTuple {
 
         private Job job;
         private ScheduledFuture scheduledFuture;
