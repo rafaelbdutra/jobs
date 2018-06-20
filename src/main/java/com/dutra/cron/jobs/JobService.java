@@ -29,7 +29,7 @@ public class JobService {
     }
 
     public void schedule(Job job) {
-        ScheduledFuture<?> scheduledFuture = taskScheduler.schedule(job, new CronTrigger(job.getCron()));
+        final ScheduledFuture<?> scheduledFuture = taskScheduler.schedule(job, new CronTrigger(job.getCron()));
         jobs.put(job.getName(), new JobTuple(job, scheduledFuture));
     }
 

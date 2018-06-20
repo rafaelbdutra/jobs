@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scheduled Jobs</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" charset="UTF-8"
+          href="/css/index.css" th:href="@{/css/index.css}" />
+</head>
+<body>
+    <h1>Scheduled Jobs</h1>
+    <hr />
+
+    <h3>All Jobs</h3>
+    <table style="width:100%">
+        <tbody>
+            <tr>
+                <th>Job name</th>
+                <th>Message</th>
+                <th>Cron</th>
+            </tr>
+            <tr th:each="job : ${jobs}">
+                <td th:text="${job.name}" />
+                <td th:text="${job.message}" />
+                <td th:text="${job.cron}" />
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
